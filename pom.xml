@@ -4,7 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>order-service</module>
+        <module>common</module>
+        <module>download-service</module>
     </modules>
 
 
@@ -29,27 +30,32 @@
         <dependencies>
             <dependency>
                 <groupId>com.models.online.system</groupId>
-                <artifactId>order-domain-core</artifactId>
+                <artifactId>download-domain-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.models.online.system</groupId>
-                <artifactId>order-application-service</artifactId>
+                <artifactId>download-application-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.models.online.system</groupId>
-                <artifactId>order-application</artifactId>
+                <artifactId>download-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.models.online.system</groupId>
-                <artifactId>order-dataaccess</artifactId>
+                <artifactId>download-dataaccess</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.models.online.system</groupId>
-                <artifactId>order-messaging</artifactId>
+                <artifactId>download-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.models.online.system</groupId>
+                <artifactId>common-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
