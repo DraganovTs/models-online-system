@@ -46,6 +46,46 @@ public class Download extends AggregateRoot<DownloadId> {
         validateItemsPrice();
     }
 
+    public void pay() {
+        if (downloadStatus != DownloadStatus.PENDING) {
+            throw new DownloadDomainException("Download is not in correct state for pay operation!");
+        }
+        downloadStatus = DownloadStatus.PAID;
+    }
+
+    public void approve() {
+        if (downloadStatus != DownloadStatus.PAID) {
+            throw new DownloadDomainException("Download is not in correct state for approve operation!");
+        }
+        downloadStatus = DownloadStatus.APPROVED;
+    }
+
+    public void initCancel(List<String> failureMessages) {
+        if (downloadStatus != DownloadStatus.PAID) {
+            throw new DownloadDomainException("Download is not in correct state for initCancel operation!");
+        }
+        downloadStatus = DownloadStatus.CANCELLING;
+        updateFailureMessages(failureMessages);
+    }
+
+    public void cancel(List<String> failureMessages) {
+        if (downloadStatus == DownloadStatus.CANCELLING || downloadStatus == DownloadStatus.PENDING) {
+            throw new DownloadDomainException("Download is not in correct state for cancel operation!");
+        }
+        downloadStatus = DownloadStatus.CANCEL;
+        updateFailureMessages(failureMessages);
+    }
+
+    private void updateFailureMessages(List<String> failureMessages) {
+        if (this.failureMessages != null && failureMessages != null) {
+            this.failureMessages.addAll(failureMessages.stream()
+                    .filter(message -> !message.isEmpty())
+                    .toList());
+        }
+        if (this.failureMessages == null) {
+            this.failureMessages = failureMessages;
+        }
+    }
 
     private void validateInitialDownload() {
         if (downloadStatus != null || getId() != null) {
