@@ -14,6 +14,11 @@ public class Model extends BaseEntity<ModelId> {
         this.price = price;
     }
 
+    public void updateWhitConfirmedNameAndPrice(String name, Money price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }
