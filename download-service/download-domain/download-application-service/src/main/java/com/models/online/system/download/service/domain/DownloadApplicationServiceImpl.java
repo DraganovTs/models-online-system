@@ -4,7 +4,7 @@ import com.models.online.system.download.service.domain.dto.create.CreateDownloa
 import com.models.online.system.download.service.domain.dto.create.CreateDownloadResponse;
 import com.models.online.system.download.service.domain.dto.track.TrackDownloadQuery;
 import com.models.online.system.download.service.domain.dto.track.TrackDownloadResponse;
-import com.models.online.system.download.service.domain.ports.input.service.DownloadApplication;
+import com.models.online.system.download.service.domain.ports.input.service.DownloadApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -12,13 +12,13 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 @Validated
 @Service
-class DownloadApplicationImpl implements DownloadApplication {
+class DownloadApplicationServiceImpl implements DownloadApplicationService {
 
     private final DownloadCreateCommandHandler downloadCreateCommandHandler;
     private final DownloadTrackCommandHandler downloadTrackCommandHandler;
 
-    DownloadApplicationImpl(DownloadCreateCommandHandler downloadCreateCommandHandler,
-                            DownloadTrackCommandHandler downloadTrackCommandHandler) {
+    DownloadApplicationServiceImpl(DownloadCreateCommandHandler downloadCreateCommandHandler,
+                                   DownloadTrackCommandHandler downloadTrackCommandHandler) {
         this.downloadCreateCommandHandler = downloadCreateCommandHandler;
         this.downloadTrackCommandHandler = downloadTrackCommandHandler;
     }

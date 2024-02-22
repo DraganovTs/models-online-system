@@ -27,11 +27,13 @@ public class DownloadCreateCommandHandler {
     }
 
 
+    @Transactional
     public CreateDownloadResponse createDownload(CreateDownloadCommand createDownloadCommand) {
         DownloadCreatedEvent downloadCreatedEvent = downloadCreateHelper.persistDownload(createDownloadCommand);
         log.info("Download is created whit id: {}",downloadCreatedEvent.getDownload().getId().getValue());
         downloadCreatedPaymentRequestMessagePublisher.publish(downloadCreatedEvent);
-        return downloadDataMapper.createDownloadResponse(downloadCreatedEvent.getDownload());
+        return downloadDataMapper.createDownloadResponse(downloadCreatedEvent.getDownload(),
+                "Download created Successfully");
     }
 
 

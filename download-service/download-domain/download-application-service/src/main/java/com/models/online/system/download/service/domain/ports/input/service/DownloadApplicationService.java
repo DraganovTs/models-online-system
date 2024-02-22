@@ -6,7 +6,7 @@ import com.models.online.system.download.service.domain.dto.track.TrackDownloadQ
 import com.models.online.system.download.service.domain.dto.track.TrackDownloadResponse;
 import jakarta.validation.Valid;
 
-public interface DownloadApplication {
+public interface DownloadApplicationService {
 
     CreateDownloadResponse createDownload(@Valid CreateDownloadCommand createDownloadCommand);
 

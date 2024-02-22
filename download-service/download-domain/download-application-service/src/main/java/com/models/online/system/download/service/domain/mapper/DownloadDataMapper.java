@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class DownloadDataMapper {
 
 
-    public Category createDownloadCommandToRestaurant(CreateDownloadCommand createDownloadCommand) {
+    public Category createDownloadCommandToCategory(CreateDownloadCommand createDownloadCommand) {
         return Category.Builder.builder()
                 .categoryId(new CategoryId(createDownloadCommand.getCategoryId()))
                 .models(createDownloadCommand.getItems().stream().map(downloadModel ->
@@ -44,10 +44,11 @@ public class DownloadDataMapper {
                 .build();
     }
 
-    public CreateDownloadResponse createDownloadResponse(Download download) {
+    public CreateDownloadResponse createDownloadResponse(Download download,String message) {
         return CreateDownloadResponse.builder()
                 .downloadTrackingId(download.getTrackingId().getValue())
                 .downloadStatus(download.getDownloadStatus())
+                .message(message)
                 .build();
     }
 

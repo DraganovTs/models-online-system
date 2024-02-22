@@ -52,7 +52,7 @@ public class DownloadCreateHelper {
     }
 
     private Category checkCategory(CreateDownloadCommand createDownloadCommand) {
-        Category category = downloadDataMapper.createDownloadCommandToRestaurant(createDownloadCommand);
+        Category category = downloadDataMapper.createDownloadCommandToCategory(createDownloadCommand);
         Optional<Category> optionalInformation = categoryRepository.findCategoryInformation(category);
         if (optionalInformation.isEmpty()) {
             log.warn("Could not find category whit category id: {}", createDownloadCommand.getCategoryId());
