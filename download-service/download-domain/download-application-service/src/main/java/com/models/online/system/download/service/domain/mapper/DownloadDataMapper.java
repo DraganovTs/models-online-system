@@ -8,6 +8,7 @@ import com.models.online.system.download.service.domain.dto.create.CreateDownloa
 import com.models.online.system.download.service.domain.dto.create.CreateDownloadResponse;
 import com.models.online.system.download.service.domain.dto.create.DownloadModel;
 import com.models.online.system.download.service.domain.dto.create.UserAddressInfo;
+import com.models.online.system.download.service.domain.dto.track.TrackDownloadResponse;
 import com.models.online.system.download.service.domain.entity.Category;
 import com.models.online.system.download.service.domain.entity.Download;
 import com.models.online.system.download.service.domain.entity.DownloadItem;
@@ -43,10 +44,18 @@ public class DownloadDataMapper {
                 .build();
     }
 
-    public CreateDownloadResponse createDownloadResponse(Download download){
+    public CreateDownloadResponse createDownloadResponse(Download download) {
         return CreateDownloadResponse.builder()
                 .downloadTrackingId(download.getTrackingId().getValue())
                 .downloadStatus(download.getDownloadStatus())
+                .build();
+    }
+
+    public TrackDownloadResponse downloadToTrackDownloadResponse(Download download) {
+        return TrackDownloadResponse.builder()
+                .downloadTrackingId(download.getTrackingId().getValue())
+                .downloadStatus(download.getDownloadStatus())
+                .failureMessages(download.getFailureMessages())
                 .build();
     }
 
