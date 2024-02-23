@@ -106,8 +106,8 @@ public class Download extends AggregateRoot<DownloadId> {
         }).reduce(Money.ZERO, Money::add);
 
         if (!price.equals(downloadItemsTotal)) {
-            throw new DownloadDomainException("Total price " + price.getAmount()
-                    + " is not equal to to Download items total: " + downloadItemsTotal.getAmount() + "!");
+            throw new DownloadDomainException("Total price: " + price.getAmount()
+                    + " is not equal to Download items total: " + downloadItemsTotal.getAmount() + "!");
         }
     }
 

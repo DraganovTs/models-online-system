@@ -57,7 +57,7 @@ public class DownloadDomainServiceImpl implements DownloadDomainService {
 
     private void validateCategory(Category category) {
         if (!category.isActive()) {
-            throw new DownloadDomainException("Category whit id " + category.getId().getValue() +
+            throw new DownloadDomainException("Category with id " + category.getId().getValue() +
                     "is currently not active!");
         }
     }

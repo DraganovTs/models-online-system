@@ -32,8 +32,8 @@ public class DownloadTrackCommandHandler {
         Optional<Download> downloadResult = downloadRepository.findByTrackingId(new TrackingId(
                 trackDownloadQuery.getDownloadTrackingId()));
         if (downloadResult.isEmpty()) {
-            log.warn("Could not find order whit tracking id: {}", trackDownloadQuery.getDownloadTrackingId());
-            throw new DownloadNotFoundException("Could not find order whit tracking id: "
+            log.warn("Could not find download whit tracking id: {}", trackDownloadQuery.getDownloadTrackingId());
+            throw new DownloadNotFoundException("Could not find download whit tracking id: "
                     + trackDownloadQuery.getDownloadTrackingId());
         }
         return downloadDataMapper.downloadToTrackDownloadResponse(downloadResult.get());

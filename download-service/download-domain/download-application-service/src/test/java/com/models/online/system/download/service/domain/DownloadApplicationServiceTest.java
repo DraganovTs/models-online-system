@@ -2,15 +2,18 @@ package com.models.online.system.download.service.domain;
 
 import com.models.online.system.domain.valueobject.*;
 import com.models.online.system.download.service.domain.dto.create.CreateDownloadCommand;
+import com.models.online.system.download.service.domain.dto.create.CreateDownloadResponse;
 import com.models.online.system.download.service.domain.dto.create.UserAddressInfo;
 import com.models.online.system.download.service.domain.dto.create.DownloadModel;
 import com.models.online.system.download.service.domain.entity.*;
+import com.models.online.system.download.service.domain.exception.DownloadDomainException;
 import com.models.online.system.download.service.domain.mapper.DownloadDataMapper;
 import com.models.online.system.download.service.domain.ports.input.service.DownloadApplicationService;
 import com.models.online.system.download.service.domain.ports.output.repository.CategoryRepository;
 import com.models.online.system.download.service.domain.ports.output.repository.CustomerRepository;
 import com.models.online.system.download.service.domain.ports.output.repository.DownloadRepository;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +23,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -111,9 +116,9 @@ public class DownloadApplicationServiceTest {
 
         Category categoryResponse = new Category.Builder()
                 .categoryId(new CategoryId(createDownloadCommand.getCategoryId()))
-                .models(List.of(new Model(new ModelId(MODEL_ID), "test111",
+                .models(List.of(new Model(new ModelId(MODEL_ID), "model-1",
                                 new Money(new BigDecimal("50.00"))),
-                        new Model(new ModelId(MODEL_ID), "test222",
+                        new Model(new ModelId(MODEL_ID), "model-2",
                                 new Money(new BigDecimal("50.00")))))
                 .active(true)
                 .build();
@@ -127,6 +132,42 @@ public class DownloadApplicationServiceTest {
         when(downloadRepository.save(any(Download.class))).thenReturn(download);
     }
 
+    @Test
+    public void testCreateDownload(){
+        CreateDownloadResponse createDownloadResponse = downloadApplicationService.createDownload(createDownloadCommand);
+        assertEquals(DownloadStatus.PENDING, createDownloadResponse.getDownloadStatus());
+        assertEquals("Download created Successfully", createDownloadResponse.getMessage());
+        assertNotNull(createDownloadResponse.getDownloadTrackingId());
+    }
+
+    @Test
+    public void testCreateOrderWithWrongTotalPrice() {
+        DownloadDomainException downloadDomainException = assertThrows(DownloadDomainException.class,
+                () -> downloadApplicationService.createDownload(createDownloadCommandWrongPrice));
+        assertEquals("Total price: 250.00 is not equal to Download items total: 100.00!", downloadDomainException.getMessage());
+    }
+
+    @Test
+    public void testCreateOrderWithWrongProductPrice() {
+        DownloadDomainException downloadDomainException = assertThrows(DownloadDomainException.class,
+                () -> downloadApplicationService.createDownload(createDownloadCommandWrongProductPrice));
+        assertEquals("Download item price: 60.00 is not valid for model " + MODEL_ID, downloadDomainException.getMessage());
+    }
+
+    @Test
+    public void testCreateOrderWithPassiveRestaurant() {
+        Category categoryResponse = Category.Builder.builder()
+                .categoryId(new CategoryId(createDownloadCommand.getCategoryId()))
+                .models(List.of(new Model(new ModelId(MODEL_ID), "model-1", new Money(new BigDecimal("50.00"))),
+                        new Model(new ModelId(MODEL_ID), "model-2", new Money(new BigDecimal("50.00")))))
+                .active(false)
+                .build();
+        when(categoryRepository.findCategoryInformation(downloadDataMapper.createDownloadCommandToCategory(createDownloadCommand)))
+                .thenReturn(Optional.of(categoryResponse));
+        DownloadDomainException orderDomainException = assertThrows(DownloadDomainException.class,
+                () -> downloadApplicationService.createDownload(createDownloadCommand));
+        assertEquals("Category with id " + CATEGORY_ID + "is currently not active!", orderDomainException.getMessage());
+    }
 
 }
 
