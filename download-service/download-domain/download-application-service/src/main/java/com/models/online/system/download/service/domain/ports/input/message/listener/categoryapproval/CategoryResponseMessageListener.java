@@ -1,9 +1,9 @@
 package com.models.online.system.download.service.domain.ports.input.message.listener.categoryapproval;
 
-import com.models.online.system.download.service.domain.dto.message.CategoryApproveResponse;
+import com.models.online.system.download.service.domain.dto.message.CategoryApprovalResponse;
 
 public interface CategoryResponseMessageListener {
-    void downloadApproved(CategoryApproveResponse categoryApproveResponse);
+    void downloadApproved(CategoryApprovalResponse categoryApprovalResponse);
 
-    void downloadRejected(CategoryApproveResponse categoryApproveResponse);
+    void downloadRejected(CategoryApprovalResponse categoryApprovalResponse);
 }

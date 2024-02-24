@@ -27,7 +27,9 @@
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <mockito.version>5.7.0</mockito.version>
         <byte-buddy.version>1.12.7</byte-buddy.version>
-
+        <spring-kafka.version>3.1.2</spring-kafka.version>
+        <kafka-avro-serializer.version>7.0.1</kafka-avro-serializer.version>
+        <avro.version>1.11.0</avro.version>
     </properties>
 
     <dependencyManagement>
@@ -60,6 +62,26 @@
             <dependency>
                 <groupId>com.models.online.system</groupId>
                 <artifactId>common-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.models.online.system</groupId>
+                <artifactId>kafka-producer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.models.online.system</groupId>
+                <artifactId>kafka-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.models.online.system</groupId>
+                <artifactId>kafka-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.models.online.system</groupId>
+                <artifactId>kafka-config-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
         <dependency>
