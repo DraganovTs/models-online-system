@@ -15,6 +15,7 @@
         <module name="kafka-config-data" />
         <module name="download-messaging" />
         <module name="download-domain-core" />
+        <module name="common-applicaition" />
         <module name="download-container" />
         <module name="download-application-service" />
         <module name="common-domain" />
@@ -34,6 +35,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="" />
+      <module name="common-applicaition" options="-parameters" />
       <module name="common-domain" options="-parameters" />
       <module name="download-application" options="-parameters" />
       <module name="download-application-service" options="-parameters" />
