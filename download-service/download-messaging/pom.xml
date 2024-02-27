@@ -16,6 +16,18 @@
             <groupId>com.models.online.system</groupId>
             <artifactId>download-application-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.models.online.system</groupId>
+            <artifactId>kafka-producer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.models.online.system</groupId>
+            <artifactId>kafka-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.models.online.system</groupId>
+            <artifactId>kafka-consumer</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -3,7 +3,7 @@ package com.models.online.system.download.service.domain;
 import com.models.online.system.download.service.domain.entity.Category;
 import com.models.online.system.download.service.domain.entity.Download;
 import com.models.online.system.download.service.domain.entity.Model;
-import com.models.online.system.download.service.domain.event.DownloadCancelEvent;
+import com.models.online.system.download.service.domain.event.DownloadCancelledEvent;
 import com.models.online.system.download.service.domain.event.DownloadCreatedEvent;
 import com.models.online.system.download.service.domain.event.DownloadPaidEvent;
 import com.models.online.system.download.service.domain.exception.DownloadDomainException;
@@ -43,10 +43,10 @@ public class DownloadDomainServiceImpl implements DownloadDomainService {
     }
 
     @Override
-    public DownloadCancelEvent cancelDownloadPayment(Download download, List<String> failureMessages) {
+    public DownloadCancelledEvent cancelDownloadPayment(Download download, List<String> failureMessages) {
         download.initCancel(failureMessages);
         log.info("Download payment is cancelling for download whit id: {} ", download.getId().getValue());
-        return new DownloadCancelEvent(download, ZonedDateTime.now(ZoneId.of(UTC)));
+        return new DownloadCancelledEvent(download, ZonedDateTime.now(ZoneId.of(UTC)));
     }
 
     @Override

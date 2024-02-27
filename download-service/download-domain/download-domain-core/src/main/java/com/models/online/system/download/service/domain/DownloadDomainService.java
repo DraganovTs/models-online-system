@@ -2,7 +2,7 @@ package com.models.online.system.download.service.domain;
 
 import com.models.online.system.download.service.domain.entity.Category;
 import com.models.online.system.download.service.domain.entity.Download;
-import com.models.online.system.download.service.domain.event.DownloadCancelEvent;
+import com.models.online.system.download.service.domain.event.DownloadCancelledEvent;
 import com.models.online.system.download.service.domain.event.DownloadCreatedEvent;
 import com.models.online.system.download.service.domain.event.DownloadPaidEvent;
 
@@ -16,7 +16,7 @@ public interface DownloadDomainService {
 
     void approveDownload(Download download);
 
-    DownloadCancelEvent cancelDownloadPayment(Download download, List<String> failureMessages);
+    DownloadCancelledEvent cancelDownloadPayment(Download download, List<String> failureMessages);
 
     void cancelDownload(Download download, List<String> failureMessages);
 }
