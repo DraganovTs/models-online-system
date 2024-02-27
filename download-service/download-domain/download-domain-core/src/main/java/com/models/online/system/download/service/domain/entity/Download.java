@@ -21,6 +21,8 @@ public class Download extends AggregateRoot<DownloadId> {
     private DownloadStatus downloadStatus;
     private List<String> failureMessages;
 
+    public static final String FAILURE_MESSAGE_DELIMITER = ",";
+
     private Download(Builder builder) {
         super.setId(builder.downloadId);
         customerId = builder.customerId;
