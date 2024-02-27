@@ -6,4 +6,6 @@ public class ModelId extends BaseId<UUID>{
     public ModelId(UUID value) {
         super(value);
     }
+
+
 }
