@@ -1,6 +1,5 @@
 package com.models.online.system.download.service.messaging.publisher.kafka;
 
-import com.models.online.system.kafka.download.avro.model.PaymentRequestAvroModel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.kafka.support.SendResult;

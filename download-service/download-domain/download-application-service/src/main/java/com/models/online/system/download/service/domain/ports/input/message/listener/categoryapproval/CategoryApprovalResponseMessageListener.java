@@ -2,7 +2,7 @@ package com.models.online.system.download.service.domain.ports.input.message.lis
 
 import com.models.online.system.download.service.domain.dto.message.CategoryApprovalResponse;
 
-public interface CategoryResponseMessageListener {
+public interface CategoryApprovalResponseMessageListener {
     void downloadApproved(CategoryApprovalResponse categoryApprovalResponse);
 
     void downloadRejected(CategoryApprovalResponse categoryApprovalResponse);

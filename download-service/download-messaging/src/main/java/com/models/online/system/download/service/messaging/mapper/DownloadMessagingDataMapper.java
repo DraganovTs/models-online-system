@@ -1,5 +1,6 @@
 package com.models.online.system.download.service.messaging.mapper;
 
+import com.models.online.system.download.service.domain.dto.message.PaymentResponse;
 import com.models.online.system.download.service.domain.entity.Download;
 import com.models.online.system.download.service.domain.event.DownloadCancelledEvent;
 import com.models.online.system.download.service.domain.event.DownloadCreatedEvent;
@@ -56,5 +57,22 @@ public class DownloadMessagingDataMapper {
                 .setCreatedAt(downloadPaidEvent.getCreatedAt().toInstant())
                 .setDownloadApprovalStatus(DownloadApprovalStatus.PAID)
                 .build();
+    }
+
+    public PaymentResponse paymentResponseAvroModelToPaymentResponse(PaymentResponseAvroModel
+                                                                             paymentResponseAvroModel) {
+        return PaymentResponse.builder()
+                .id(paymentResponseAvroModel.getId())
+                .sagaId(paymentResponseAvroModel.getSagaId())
+                .paymentId(paymentResponseAvroModel.getPaymentId())
+                .customerId(paymentResponseAvroModel.getCustomerId())
+                .downloadId(paymentResponseAvroModel.getDownloadId())
+                .price(paymentResponseAvroModel.getPrice())
+                .createdAt(paymentResponseAvroModel.getCreatedAt())
+                .paymentStatus(com.models.online.system.domain.valueobject.PaymentStatus.valueOf(
+                        paymentResponseAvroModel.getPaymentStatus().name()))
+                .failureMessages(paymentResponseAvroModel.getFailureMessages())
+                .build();
+
     }
 }
