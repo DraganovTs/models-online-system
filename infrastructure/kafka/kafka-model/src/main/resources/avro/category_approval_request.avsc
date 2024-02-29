@@ -18,13 +18,6 @@
             }
         },
         {
-            "name": "downloadId",
-            "type": {
-                "type": "string",
-                "logicalType": "uuid"
-            }
-        },
-        {
             "name": "categoryId",
             "type": {
                 "type": "string",
@@ -32,11 +25,18 @@
             }
         },
         {
-            "name": "downloadApprovalStatus",
+            "name": "downloadId",
             "type": {
-                  "type": "enum",
-                  "name": "DownloadApprovalStatus",
-                  "symbols": ["PAID"]
+                "type": "string",
+                "logicalType": "uuid"
+            }
+        },
+        {
+            "name": "categoryDownloadStatus",
+            "type": {
+                "type": "enum",
+                "name": "CategoryDownloadStatus",
+                "symbols": ["PAID"]
             }
         },
         {
@@ -44,12 +44,12 @@
             "type": {
                 "type": "array",
                 "items":{
-                  "name":"Model",
-                  "type":"record",
-                  "fields":[
-                    {"name":"id", "type": "string", "logicalType": "uuid"}
-                   ]
-               }
+                    "name":"Model",
+                    "type":"record",
+                    "fields":[
+                        {"name":"id", "type": "string", "logicalType": "uuid"}
+                    ]
+                }
             }
         },
         {

@@ -18,14 +18,14 @@
             }
         },
         {
-            "name": "downloadId",
+            "name": "categoryId",
             "type": {
                 "type": "string",
                 "logicalType": "uuid"
             }
         },
         {
-            "name": "categoryId",
+            "name": "downloadId",
             "type": {
                 "type": "string",
                 "logicalType": "uuid"
@@ -41,18 +41,18 @@
         {
             "name": "downloadApprovalStatus",
             "type": {
-                  "type": "enum",
-                  "name": "DownloadApprovalStatus",
-                  "symbols": ["APPROVED", "REJECTED"]
-               }
+                "type": "enum",
+                "name": "DownloadApprovalStatus",
+                "symbols": ["APPROVED", "REJECTED"]
+            }
         },
         {
             "name": "failureMessages",
             "type": {
                 "type": "array",
                 "items":{
-                  "type":"string"
-               }
+                    "type":"string"
+                }
             }
         }
     ]

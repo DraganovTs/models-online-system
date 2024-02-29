@@ -1,10 +1,10 @@
 package com.models.online.system.download.service.messaging.listener.kafka;
 
-import com.models.online.system.domain.valueobject.DownloadApprovalStatus;
 import com.models.online.system.download.service.domain.ports.input.message.listener.categoryapproval.CategoryApprovalResponseMessageListener;
 import com.models.online.system.download.service.messaging.mapper.DownloadMessagingDataMapper;
 import com.models.online.system.kafka.comsumer.KafkaConsumer;
 import com.models.online.system.kafka.download.avro.model.CategoryApprovalResponseAvroModel;
+import com.models.online.system.kafka.download.avro.model.DownloadApprovalStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -29,7 +29,7 @@ public class CategoryApprovalResponseKafkaListener implements KafkaConsumer<Cate
 
     @Override
     @KafkaListener(id = "${kafka-consumer-config.category-approval-consumer-group-id}",
-            topics = "${category-service.category-approval-response-topic-name}")
+            topics = "${download-service.category-approval-response-topic-name}")
     public void receive(@Payload List<CategoryApprovalResponseAvroModel> messages,
                         @Header(KafkaHeaders.RECEIVED_KEY) List<String> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,
@@ -42,8 +42,18 @@ public class CategoryApprovalResponseKafkaListener implements KafkaConsumer<Cate
                 offsets.toString());
 
         messages.forEach(categoryApprovalResponseAvroModel -> {
-            if (DownloadApprovalStatus.APPROVED == categoryApprovalResponseAvroModel.getDownloadApprovalStatus()){
+            if (DownloadApprovalStatus.APPROVED == categoryApprovalResponseAvroModel.getDownloadApprovalStatus()) {
+                log.info("Processing approved download for download id: {}",
+                        categoryApprovalResponseAvroModel.getDownloadId());
+                categoryApprovalResponseMessageListener.downloadApproved(
+                        downloadMessagingDataMapper.approvalResponseAvroModelToApprovalResponse(categoryApprovalResponseAvroModel));
 
+            } else if (DownloadApprovalStatus.REJECTED == categoryApprovalResponseAvroModel.getDownloadApprovalStatus()) {
+                log.info("Processing rejected download for download id: {} , whit failure messages: {}",
+                        categoryApprovalResponseAvroModel.getDownloadId(),
+                        categoryApprovalResponseAvroModel.getFailureMessages());
+                categoryApprovalResponseMessageListener.downloadRejected(downloadMessagingDataMapper
+                        .approvalResponseAvroModelToApprovalResponse(categoryApprovalResponseAvroModel));
             }
         });
     }

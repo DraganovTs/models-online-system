@@ -4,6 +4,7 @@ import com.models.online.system.download.service.domain.config.DownloadServiceCo
 import com.models.online.system.download.service.domain.event.DownloadCancelledEvent;
 import com.models.online.system.download.service.domain.ports.output.messaeg.publisher.payment.DownloadCancelPaymentRequestMessagePublisher;
 import com.models.online.system.download.service.messaging.mapper.DownloadMessagingDataMapper;
+import com.models.online.system.kafka.download.avro.model.PaymentRequestAvroModel;
 import com.models.online.system.kafka.producer.service.KafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

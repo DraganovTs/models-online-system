@@ -1,5 +1,7 @@
 package com.models.online.system.download.service.messaging.mapper;
 
+import com.models.online.system.domain.valueobject.DownloadApprovalStatus;
+import com.models.online.system.download.service.domain.dto.message.CategoryApprovalResponse;
 import com.models.online.system.download.service.domain.dto.message.PaymentResponse;
 import com.models.online.system.download.service.domain.entity.Download;
 import com.models.online.system.download.service.domain.event.DownloadCancelledEvent;
@@ -55,7 +57,7 @@ public class DownloadMessagingDataMapper {
                         .collect(Collectors.toList()))
                 .setPrice(download.getPrice().getAmount())
                 .setCreatedAt(downloadPaidEvent.getCreatedAt().toInstant())
-                .setDownloadApprovalStatus(DownloadApprovalStatus.PAID)
+                .setCategoryDownloadStatus(CategoryDownloadStatus.PAID)
                 .build();
     }
 
@@ -74,5 +76,18 @@ public class DownloadMessagingDataMapper {
                 .failureMessages(paymentResponseAvroModel.getFailureMessages())
                 .build();
 
+    }
+
+    public CategoryApprovalResponse approvalResponseAvroModelToApprovalResponse(CategoryApprovalResponseAvroModel categoryApprovalResponseAvroModel) {
+        return CategoryApprovalResponse.builder()
+                .id(categoryApprovalResponseAvroModel.getId())
+                .sagaId(categoryApprovalResponseAvroModel.getSagaId())
+                .categoryId(categoryApprovalResponseAvroModel.getCategoryId())
+                .downloadId(categoryApprovalResponseAvroModel.getDownloadId())
+                .createdAt(categoryApprovalResponseAvroModel.getCreatedAt())
+                .downloadApprovalStatus(DownloadApprovalStatus.valueOf(
+                        categoryApprovalResponseAvroModel.getDownloadApprovalStatus().name()))
+                .failureMessages(categoryApprovalResponseAvroModel.getFailureMessages())
+                .build();
     }
 }

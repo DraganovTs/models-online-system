@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8278700561181550647L;
+  private static final long serialVersionUID = -8072036265467089147L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CategoryApprovalResponseAvroModel\",\"namespace\":\"com.models.online.system.kafka.download.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"downloadId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"categoryId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"createdAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"downloadApprovalStatus\",\"type\":{\"type\":\"enum\",\"name\":\"DownloadApprovalStatus\",\"symbols\":[\"APPROVED\",\"REJECTED\"]}},{\"name\":\"failureMessages\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CategoryApprovalResponseAvroModel\",\"namespace\":\"com.models.online.system.kafka.download.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"categoryId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"downloadId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"createdAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"downloadApprovalStatus\",\"type\":{\"type\":\"enum\",\"name\":\"DownloadApprovalStatus\",\"symbols\":[\"APPROVED\",\"REJECTED\"]}},{\"name\":\"failureMessages\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -78,8 +78,8 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
 
   private java.lang.String id;
   private java.lang.String sagaId;
-  private java.lang.String downloadId;
   private java.lang.String categoryId;
+  private java.lang.String downloadId;
   private java.time.Instant createdAt;
   private com.models.online.system.kafka.download.avro.model.DownloadApprovalStatus downloadApprovalStatus;
   private java.util.List<java.lang.String> failureMessages;
@@ -95,17 +95,17 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
    * All-args constructor.
    * @param id The new value for id
    * @param sagaId The new value for sagaId
-   * @param downloadId The new value for downloadId
    * @param categoryId The new value for categoryId
+   * @param downloadId The new value for downloadId
    * @param createdAt The new value for createdAt
    * @param downloadApprovalStatus The new value for downloadApprovalStatus
    * @param failureMessages The new value for failureMessages
    */
-  public CategoryApprovalResponseAvroModel(java.lang.String id, java.lang.String sagaId, java.lang.String downloadId, java.lang.String categoryId, java.time.Instant createdAt, com.models.online.system.kafka.download.avro.model.DownloadApprovalStatus downloadApprovalStatus, java.util.List<java.lang.String> failureMessages) {
+  public CategoryApprovalResponseAvroModel(java.lang.String id, java.lang.String sagaId, java.lang.String categoryId, java.lang.String downloadId, java.time.Instant createdAt, com.models.online.system.kafka.download.avro.model.DownloadApprovalStatus downloadApprovalStatus, java.util.List<java.lang.String> failureMessages) {
     this.id = id;
     this.sagaId = sagaId;
-    this.downloadId = downloadId;
     this.categoryId = categoryId;
+    this.downloadId = downloadId;
     this.createdAt = createdAt.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
     this.downloadApprovalStatus = downloadApprovalStatus;
     this.failureMessages = failureMessages;
@@ -118,8 +118,8 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
     switch (field$) {
     case 0: return id;
     case 1: return sagaId;
-    case 2: return downloadId;
-    case 3: return categoryId;
+    case 2: return categoryId;
+    case 3: return downloadId;
     case 4: return createdAt;
     case 5: return downloadApprovalStatus;
     case 6: return failureMessages;
@@ -150,8 +150,8 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
     switch (field$) {
     case 0: id = value$ != null ? value$.toString() : null; break;
     case 1: sagaId = value$ != null ? value$.toString() : null; break;
-    case 2: downloadId = value$ != null ? value$.toString() : null; break;
-    case 3: categoryId = value$ != null ? value$.toString() : null; break;
+    case 2: categoryId = value$ != null ? value$.toString() : null; break;
+    case 3: downloadId = value$ != null ? value$.toString() : null; break;
     case 4: createdAt = (java.time.Instant)value$; break;
     case 5: downloadApprovalStatus = (com.models.online.system.kafka.download.avro.model.DownloadApprovalStatus)value$; break;
     case 6: failureMessages = (java.util.List<java.lang.String>)value$; break;
@@ -194,23 +194,6 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
   }
 
   /**
-   * Gets the value of the 'downloadId' field.
-   * @return The value of the 'downloadId' field.
-   */
-  public java.lang.String getDownloadId() {
-    return downloadId;
-  }
-
-
-  /**
-   * Sets the value of the 'downloadId' field.
-   * @param value the value to set.
-   */
-  public void setDownloadId(java.lang.String value) {
-    this.downloadId = value;
-  }
-
-  /**
    * Gets the value of the 'categoryId' field.
    * @return The value of the 'categoryId' field.
    */
@@ -225,6 +208,23 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
    */
   public void setCategoryId(java.lang.String value) {
     this.categoryId = value;
+  }
+
+  /**
+   * Gets the value of the 'downloadId' field.
+   * @return The value of the 'downloadId' field.
+   */
+  public java.lang.String getDownloadId() {
+    return downloadId;
+  }
+
+
+  /**
+   * Sets the value of the 'downloadId' field.
+   * @param value the value to set.
+   */
+  public void setDownloadId(java.lang.String value) {
+    this.downloadId = value;
   }
 
   /**
@@ -321,8 +321,8 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
 
     private java.lang.String id;
     private java.lang.String sagaId;
-    private java.lang.String downloadId;
     private java.lang.String categoryId;
+    private java.lang.String downloadId;
     private java.time.Instant createdAt;
     private com.models.online.system.kafka.download.avro.model.DownloadApprovalStatus downloadApprovalStatus;
     private java.util.List<java.lang.String> failureMessages;
@@ -346,12 +346,12 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
         this.sagaId = data().deepCopy(fields()[1].schema(), other.sagaId);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.downloadId)) {
-        this.downloadId = data().deepCopy(fields()[2].schema(), other.downloadId);
+      if (isValidValue(fields()[2], other.categoryId)) {
+        this.categoryId = data().deepCopy(fields()[2].schema(), other.categoryId);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.categoryId)) {
-        this.categoryId = data().deepCopy(fields()[3].schema(), other.categoryId);
+      if (isValidValue(fields()[3], other.downloadId)) {
+        this.downloadId = data().deepCopy(fields()[3].schema(), other.downloadId);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
       if (isValidValue(fields()[4], other.createdAt)) {
@@ -382,12 +382,12 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
         this.sagaId = data().deepCopy(fields()[1].schema(), other.sagaId);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.downloadId)) {
-        this.downloadId = data().deepCopy(fields()[2].schema(), other.downloadId);
+      if (isValidValue(fields()[2], other.categoryId)) {
+        this.categoryId = data().deepCopy(fields()[2].schema(), other.categoryId);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.categoryId)) {
-        this.categoryId = data().deepCopy(fields()[3].schema(), other.categoryId);
+      if (isValidValue(fields()[3], other.downloadId)) {
+        this.downloadId = data().deepCopy(fields()[3].schema(), other.downloadId);
         fieldSetFlags()[3] = true;
       }
       if (isValidValue(fields()[4], other.createdAt)) {
@@ -485,46 +485,6 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
     }
 
     /**
-      * Gets the value of the 'downloadId' field.
-      * @return The value.
-      */
-    public java.lang.String getDownloadId() {
-      return downloadId;
-    }
-
-
-    /**
-      * Sets the value of the 'downloadId' field.
-      * @param value The value of 'downloadId'.
-      * @return This builder.
-      */
-    public com.models.online.system.kafka.download.avro.model.CategoryApprovalResponseAvroModel.Builder setDownloadId(java.lang.String value) {
-      validate(fields()[2], value);
-      this.downloadId = value;
-      fieldSetFlags()[2] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'downloadId' field has been set.
-      * @return True if the 'downloadId' field has been set, false otherwise.
-      */
-    public boolean hasDownloadId() {
-      return fieldSetFlags()[2];
-    }
-
-
-    /**
-      * Clears the value of the 'downloadId' field.
-      * @return This builder.
-      */
-    public com.models.online.system.kafka.download.avro.model.CategoryApprovalResponseAvroModel.Builder clearDownloadId() {
-      downloadId = null;
-      fieldSetFlags()[2] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'categoryId' field.
       * @return The value.
       */
@@ -539,9 +499,9 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
       * @return This builder.
       */
     public com.models.online.system.kafka.download.avro.model.CategoryApprovalResponseAvroModel.Builder setCategoryId(java.lang.String value) {
-      validate(fields()[3], value);
+      validate(fields()[2], value);
       this.categoryId = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -550,7 +510,7 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
       * @return True if the 'categoryId' field has been set, false otherwise.
       */
     public boolean hasCategoryId() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[2];
     }
 
 
@@ -560,6 +520,46 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
       */
     public com.models.online.system.kafka.download.avro.model.CategoryApprovalResponseAvroModel.Builder clearCategoryId() {
       categoryId = null;
+      fieldSetFlags()[2] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'downloadId' field.
+      * @return The value.
+      */
+    public java.lang.String getDownloadId() {
+      return downloadId;
+    }
+
+
+    /**
+      * Sets the value of the 'downloadId' field.
+      * @param value The value of 'downloadId'.
+      * @return This builder.
+      */
+    public com.models.online.system.kafka.download.avro.model.CategoryApprovalResponseAvroModel.Builder setDownloadId(java.lang.String value) {
+      validate(fields()[3], value);
+      this.downloadId = value;
+      fieldSetFlags()[3] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'downloadId' field has been set.
+      * @return True if the 'downloadId' field has been set, false otherwise.
+      */
+    public boolean hasDownloadId() {
+      return fieldSetFlags()[3];
+    }
+
+
+    /**
+      * Clears the value of the 'downloadId' field.
+      * @return This builder.
+      */
+    public com.models.online.system.kafka.download.avro.model.CategoryApprovalResponseAvroModel.Builder clearDownloadId() {
+      downloadId = null;
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -690,8 +690,8 @@ public class CategoryApprovalResponseAvroModel extends org.apache.avro.specific.
         CategoryApprovalResponseAvroModel record = new CategoryApprovalResponseAvroModel();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.String) defaultValue(fields()[0]);
         record.sagaId = fieldSetFlags()[1] ? this.sagaId : (java.lang.String) defaultValue(fields()[1]);
-        record.downloadId = fieldSetFlags()[2] ? this.downloadId : (java.lang.String) defaultValue(fields()[2]);
-        record.categoryId = fieldSetFlags()[3] ? this.categoryId : (java.lang.String) defaultValue(fields()[3]);
+        record.categoryId = fieldSetFlags()[2] ? this.categoryId : (java.lang.String) defaultValue(fields()[2]);
+        record.downloadId = fieldSetFlags()[3] ? this.downloadId : (java.lang.String) defaultValue(fields()[3]);
         record.createdAt = fieldSetFlags()[4] ? this.createdAt : (java.time.Instant) defaultValue(fields()[4]);
         record.downloadApprovalStatus = fieldSetFlags()[5] ? this.downloadApprovalStatus : (com.models.online.system.kafka.download.avro.model.DownloadApprovalStatus) defaultValue(fields()[5]);
         record.failureMessages = fieldSetFlags()[6] ? this.failureMessages : (java.util.List<java.lang.String>) defaultValue(fields()[6]);
