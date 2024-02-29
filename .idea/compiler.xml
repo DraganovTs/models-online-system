@@ -7,18 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="download-domain-core" />
+        <module name="common-applicaition" />
         <module name="download-application" />
         <module name="download-dataaccess" />
         <module name="kafka-model" />
-        <module name="kafka-consumer" />
-        <module name="kafka-producer" />
-        <module name="kafka-config-data" />
-        <module name="download-messaging" />
-        <module name="download-domain-core" />
-        <module name="common-applicaition" />
         <module name="download-container" />
         <module name="download-application-service" />
+        <module name="kafka-consumer" />
+        <module name="kafka-producer" />
         <module name="common-domain" />
+        <module name="kafka-config-data" />
+        <module name="download-messaging" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
