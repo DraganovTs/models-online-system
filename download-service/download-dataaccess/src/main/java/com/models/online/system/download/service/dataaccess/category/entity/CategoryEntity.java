@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @IdClass(CategoryEntityId.class)
-@Table(name = "download_category_m_view", schema = "downloads")
+@Table(name = "download_category_m_view", schema = "category")
 @Entity
 public class CategoryEntity {
 
@@ -28,7 +28,7 @@ public class CategoryEntity {
     private String categoryName;
     private Boolean categoryActive;
     private String modelName;
-    private BigDecimal productPrice;
+    private BigDecimal modelPrice;
 
     @Override
     public boolean equals(Object o) {

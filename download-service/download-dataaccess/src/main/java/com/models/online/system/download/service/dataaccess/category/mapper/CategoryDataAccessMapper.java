@@ -29,7 +29,7 @@ public class CategoryDataAccessMapper {
 
         List<Model> categoryModels = categoryEntities.stream().map(categoryEntity ->
                 new Model(new ModelId(categoryEntity.getModelId()), categoryEntity.getModelName(),
-                        new Money(categoryEntity.getProductPrice()))).toList();
+                        new Money(categoryEntity.getModelPrice()))).toList();
 
         return Category.Builder.builder()
                 .categoryId(new CategoryId(category.getCategoryId()))
