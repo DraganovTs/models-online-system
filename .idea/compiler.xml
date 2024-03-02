@@ -43,7 +43,7 @@
       <module name="download-application-service" options="-parameters" />
       <module name="download-container" options="-parameters" />
       <module name="download-dataaccess" options="-parameters" />
-      <module name="download-domain" options="" />
+      <module name="download-domain" options="-parameters" />
       <module name="download-domain-core" options="-parameters" />
       <module name="download-messaging" options="-parameters" />
       <module name="download-service" options="" />

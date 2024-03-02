@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @IdClass(CategoryEntityId.class)
-@Table(name = "download_category_m_view", schema = "category")
+@Table(name = "download_category_m_view", schema = "downloads")
 @Entity
 public class CategoryEntity {
 

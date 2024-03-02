@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @IdClass(DownloadModelEntityId.class)
-@Table(name = "download_models")
+@Table(name = "download_items")
 @Entity
 public class DownloadModelEntity {
     @Id
